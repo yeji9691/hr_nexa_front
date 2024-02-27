@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="reqConExpense" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="0" text="" left="0" top="19" width="1060" height="610">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" text="   ◼ 경조비 신청/조회" left="10" top="10" width="290" height="65" textAlign="left" font="bold 18px/normal &quot;나눔고딕&quot;"/>
+              <Tab id="Tab00" taborder="0" tabindex="0" left="55" top="95" width="945" height="490">
+                <Tabpages>
+                  <Tabpage id="Tabpage1" text="경조비신청">
+                    <Layouts>
+                      <Layout>
+                        <Static id="empCode" taborder="0" text="신청자사번" left="67" top="98" width="80" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Static id="reqDate" taborder="1" text="신 청 일 자" left="66" top="198" width="81" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Static id="conType" taborder="2" text="경 조 구 분" left="66" top="248" width="81" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Static id="trgt" taborder="3" text="대상자성명" left="491" top="48" width="80" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;" onclick="Static_onclick"/>
+                        <Static id="conTermStart" taborder="4" text="경조일자(시작일)" left="23" top="348" width="124" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Static id="empName" taborder="5" text="신청자성명" left="67" top="148" width="80" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Static id="rel" taborder="6" text="가 족 관 계" left="66" top="298" width="81" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Static id="conAmt" taborder="7" text="신 청 금 액" left="490" top="148" width="81" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;" onclick="Static_onclick"/>
+                        <Static id="conPlace" taborder="8" text="경 조 장 소" left="490" top="98" width="81" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;" onclick="Static_onclick"/>
+                        <Static id="bank" taborder="9" text="은         행" left="488" top="248" width="83" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;" onclick="Static_onclick"/>
+                        <Static id="accNum" taborder="10" text="계 좌 번 호" left="490" top="198" width="81" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;" onclick="Static_onclick"/>
+                        <Static id="accHolder" taborder="11" text="예   금   주" left="489" top="298" width="82" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;" onclick="Static_onclick"/>
+                        <Static id="note" taborder="12" text="비         고" left="488" top="348" width="83" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;" onclick="Static_onclick"/>
+                        <Static id="conTermEnd" taborder="13" text="경조일자(종료일)" left="23" top="398" width="124" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Button id="applicationBtn00" taborder="14" text="신청" left="741" top="427" width="69" height="34" onclick="Div00_Tab00_Tabpage1_applicationBtn00_onclick" font="bold 10pt &quot;나눔고딕 &quot;" borderRadius="5px"/>
+                        <Combo id="conTypeCombo" taborder="15" text="" left="178" top="242" width="214" height="30" value="" index="-1" onitemchanged="Div00_Tab00_Tabpage1_conTypeCombo_onitemchanged" innerdataset="Dataset00" codecolumn="CODE" datacolumn="DATA" borderRadius="5px"/>
+                        <Combo id="relCombo" taborder="16" text="-- 선택하세요 --" left="178" top="292" width="214" height="30" value="" index="-1" innerdataset="Dataset01" codecolumn="CODE" datacolumn="DATA" borderRadius="5px"/>
+                        <Combo id="bankCombo" taborder="17" text="-- 선택하세요 --" left="596" top="242" width="214" height="30" value="" index="-1" innerdataset="Dataset02" codecolumn="CODE" datacolumn="DATA" borderRadius="5px"/>
+                        <Edit id="empNameEdit" taborder="18" left="178" top="142" width="214" height="30" borderRadius="5px"/>
+                        <Edit id="trgtEdit" taborder="19" left="596" top="42" width="214" height="30" borderRadius="5px"/>
+                        <Edit id="conPlaceEdit" taborder="20" left="596" top="92" width="214" height="30" borderRadius="5px"/>
+                        <Edit id="accNumEdit" taborder="21" left="596" top="192" width="214" height="30" borderRadius="5px"/>
+                        <Edit id="accHolderEdit" taborder="22" left="596" top="292" width="214" height="30" borderRadius="5px"/>
+                        <Edit id="noteEdit" taborder="23" left="596" top="342" width="214" height="30" borderRadius="5px"/>
+                        <Static id="empCode00" taborder="24" text="신 청 번 호" left="67" top="48" width="80" height="18" textAlign="center" font="bold 12pt &quot;나눔고딕 &quot;"/>
+                        <Edit id="reqNumEdit" taborder="25" left="178" top="42" width="214" height="30" readonly="true" text="NEW" borderRadius="5px"/>
+                        <Calendar id="reqDateCal" taborder="26" left="178" top="192" width="214" height="30" borderRadius="5px"/>
+                        <Calendar id="conTermEndCal" taborder="27" left="178" top="392" width="214" height="30" borderRadius="5px"/>
+                        <Calendar id="conTermStartCal" taborder="28" left="178" top="342" width="214" height="30" borderRadius="5px"/>
+                        <MaskEdit id="conAmtMEdit" taborder="29" left="596" top="142" width="214" height="30" format="+#,###" borderRadius="5px"/>
+                        <Edit id="empCodeEdit" taborder="30" left="178" top="92" width="214" height="30" borderRadius="5px"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="Tabpage2" text="신청내역" left="0" top="28" width="925" height="462">
+                    <Layouts>
+                      <Layout>
+                        <Calendar id="fromApplicationCal" taborder="5" left="95" top="25" width="134" height="29" borderRadius="5px"/>
+                        <Static id="applicationDate" taborder="0" text="신청일자" left="8" top="31" height="17" textAlign="center" font="15px/normal &quot;나눔고딕&quot;" width="57"/>
+                        <Calendar id="afterApplicationCal" taborder="1" left="272" top="26" width="134" height="29" borderRadius="5px"/>
+                        <Static id="fromApplication" taborder="2" text="~" left="241" top="25" height="28" textAlign="center" font="24px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage2_fromApplication_onclick" width="16"/>
+                        <Button id="search" taborder="3" text="조회" left="426" top="25" width="62" height="31" onclick="Div00_Tab00_Tabpage2_search_onclick" borderRadius="5px"/>
+                        <Grid id="Grid00" taborder="4" left="8" top="82" width="937" height="366" autofittype="col" binddataset="gds_conExpense" oncelldblclick="Div00_Tab00_Tabpage2_Grid00_oncelldblclick">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="90"/>
+                                <Column size="70"/>
+                                <Column size="80"/>
+                                <Column size="60"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="110"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="34" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell text="신청번호" textAlign="center"/>
+                                <Cell col="1" text="신청자" textAlign="center"/>
+                                <Cell col="2" text="신청일자" textAlign="center"/>
+                                <Cell col="3" text="경조구분" textAlign="center"/>
+                                <Cell col="4" text="경조[시작]일" textAlign="center"/>
+                                <Cell col="5" text="경조[종료]일" textAlign="center"/>
+                                <Cell col="6" text="경조금액" textAlign="center"/>
+                                <Cell col="7" text="관계" textAlign="center"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell text="bind:REQ_NUM" textAlign="center"/>
+                                <Cell col="1" text="bind:EMP_NAME" textAlign="center"/>
+                                <Cell col="2" text="bind:REQ_DATE" textAlign="center" maskeditformat="yyyy-MM-dd"/>
+                                <Cell col="3" text="bind:CON_TYPE" textAlign="center"/>
+                                <Cell col="4" text="bind:CON_TERM_START" textAlign="center"/>
+                                <Cell col="5" text="bind:CON_TERM_END" textAlign="center"/>
+                                <Cell col="6" text="bind:CON_AMT" textAlign="center" maskeditformat="+#,###"/>
+                                <Cell col="7" text="bind:REL" textAlign="center"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item3" compid="Div00_00_00.form.Tab00.Tabpage1.form.applicationDateCal" propid="value" datasetid="ds_conExpense" columnid="REQUEST_DATE"/>
+      <BindItem id="item4" compid="Div00_00_00.form.Tab00.Tabpage1.form.useDateCal" propid="value" datasetid="ds_conExpense" columnid="USE_DATE"/>
+      <BindItem id="item5" compid="Div00_00_00.form.Tab00.Tabpage1.form.etcEdit" propid="value" datasetid="ds_conExpense" columnid="ETC"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[include "Lib::commonOpen.xjs";
+include "Lib::commDate.xjs";
+include "Lib::commString.xjs";
+
+
+var nexa = nexacro.getApplication();
+
+
+//로딩시
+this.reqConExpense_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+
+	var firshTodat=this.gfn_todayFirst(); //PC의 첫날
+	this.Div00.form.Tab00.Tabpage2.form.fromApplicationCal.set_value(firshTodat);
+	var today=this.gfn_today();  //pc 오늘날짜
+	this.Div00.form.Tab00.Tabpage2.form.afterApplicationCal.set_value(today);
+};
+
+
+// 전체 조회
+// this.Div00_Tab00_Tabpage2_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+// {
+// 	this.transaction("strSelect",
+// 					"svcConExpense::conexp",
+// 					"",
+// 					"gds_conExpense=gds_conexpense",
+// 					"");
+// };
+
+
+// 날짜 조회
+this.Div00_Tab00_Tabpage2_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.searchConExpense();
+};
+
+this.searchConExpense = function(){
+	var startDate = this.Div00.form.Tab00.Tabpage2.form.fromApplicationCal.value;
+	var endDate = this.Div00.form.Tab00.Tabpage2.form.afterApplicationCal.value;
+	
+	this.transaction(
+		"strSelectDate",
+		"svcConExpense::conexp-selectdate",
+		"",
+		"gds_conExpense=gds_conexpense",
+		"startDate="+ startDate +
+		" endDate="+ endDate,
+		"fn_call2"
+	);
+}
+
+
+this.fn_call1 = function(trID, ErrorCode, ErrorMsg)
+{
+	if(ErrorCode!=0){
+		  alert("신청 실패 : "+ErrorMsg);
+		  this.reload();
+	   }else{
+		  alert(" 신청되었습니다. ");
+		  this.reload();
+	   }
+}
+
+this.fn_call2 = function(trID, ErrorCode, ErrorMsg)
+{
+	if(ErrorCode!=0){
+		  alert("조회 실패 : "+ErrorMsg);
+		  this.reload();
+	}
+}
+
+
+this.Div00_Tab00_Tabpage1_applicationBtn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if (this.Div00.form.Tab00.Tabpage1.form.empCodeEdit.value==null)
+	{
+		alert("사원번호를 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.empNameEdit.value==null)
+	{
+		alert("이름을 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.reqDateCal.value==null)
+	{
+		alert("신청일자를 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.conTypeCombo.value==null)
+	{
+		alert("경조구분을 선택해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.relCombo.value==null)
+	{
+		alert("가족관계를 선택해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.conTermStartCal.value==null)
+	{
+		alert("시작일을 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.conTermEndCal.value==null)
+	{
+		alert("종료일을 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.trgtEdit.value==null)
+	{
+		alert("대상자 성명을 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.conPlaceEdit.value==null)
+	{
+		alert("경조장소를 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.conAmtMEdit.value==null)
+	{
+		alert("신청금액을 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.accNumEdit.value==null)
+	{
+		alert("계좌번호를 입력해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.bankCombo.value==null)
+	{
+		alert("은행을 선택해주세요."); return;
+	} if (this.Div00.form.Tab00.Tabpage1.form.accHolderEdit.value==null)
+	{
+		alert("예금주를 입력해주세요."); return;
+	} 
+// 	if (this.Div00.form.Tab00.Tabpage1.form.noteEdit.value==null)
+// 	{
+// 		alert("비고를 입력해주세요."); return;
+// 	}
+	else
+	{
+		this.ds_reg.setColumn(0,"REQ_NUM","");
+		this.ds_reg.setColumn(0,"EMP_CODE",this.Div00.form.Tab00.Tabpage1.form.empCodeEdit.value);
+		this.ds_reg.setColumn(0,"EMP_NAME",this.Div00.form.Tab00.Tabpage1.form.empNameEdit.value);
+		this.ds_reg.setColumn(0,"REQ_DATE",this.Div00.form.Tab00.Tabpage1.form.reqDateCal.value);
+		this.ds_reg.setColumn(0,"CON_TYPE",this.Div00.form.Tab00.Tabpage1.form.conTypeCombo.value);
+		this.ds_reg.setColumn(0,"TRGT",this.Div00.form.Tab00.Tabpage1.form.trgtEdit.value);
+		this.ds_reg.setColumn(0,"CON_TERM_START",this.Div00.form.Tab00.Tabpage1.form.conTermStartCal.value);
+		this.ds_reg.setColumn(0,"CON_TERM_END",this.Div00.form.Tab00.Tabpage1.form.conTermEndCal.value);
+		this.ds_reg.setColumn(0,"CON_AMT",this.Div00.form.Tab00.Tabpage1.form.conAmtMEdit.value);
+		this.ds_reg.setColumn(0,"REL",this.Div00.form.Tab00.Tabpage1.form.relCombo.value);
+		this.ds_reg.setColumn(0,"CON_PLACE",this.Div00.form.Tab00.Tabpage1.form.conPlaceEdit.value);
+		this.ds_reg.setColumn(0,"BANK",this.Div00.form.Tab00.Tabpage1.form.bankCombo.value);
+		this.ds_reg.setColumn(0,"ACC_NUM",this.Div00.form.Tab00.Tabpage1.form.accNumEdit.value);
+		this.ds_reg.setColumn(0,"ACC_HOLDER",this.Div00.form.Tab00.Tabpage1.form.accHolderEdit.value);
+		this.ds_reg.setColumn(0,"NOTE",this.Div00.form.Tab00.Tabpage1.form.noteEdit.value);
+		
+		trace("시도");
+		
+		this.transaction("strInsert",
+					 "svcConExpense::conexpp",
+					 "gds_conexpense=ds_reg",//서<-클
+					 "",//클<-서
+					 "",
+					 "fn_call1");
+					 
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.reqNumEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.empCodeEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.empNameEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.reqDateCal.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.conTypeCombo.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.trgtEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.conTermStartCal.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.conTermEndCal.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.conAmtMEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.relCombo.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.conPlaceEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.bankCombo.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.accNumEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.accHolderEdit.value);
+		trace("====="+this.Div00.form.Tab00.Tabpage1.form.noteEdit.value);
+
+	}
+};
+
+
+this.Div00_Tab00_Tabpage2_Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.gfnOpen("update", "Base::updateModal.xfdl", "", "");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_conExpense">
+        <ColumnInfo>
+          <Column id="REQ_NUM" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="REQ_DATE" type="STRING" size="256"/>
+          <Column id="CON_TYPE" type="STRING" size="256"/>
+          <Column id="TRGT" type="STRING" size="256"/>
+          <Column id="CON_TERM_START" type="STRING" size="256"/>
+          <Column id="CON_TERM_END" type="STRING" size="256"/>
+          <Column id="CON_AMT" type="STRING" size="256"/>
+          <Column id="REL" type="STRING" size="256"/>
+          <Column id="CON_PLACE" type="STRING" size="256"/>
+          <Column id="BANK" type="STRING" size="256"/>
+          <Column id="ACC_NUM" type="STRING" size="256"/>
+          <Column id="ACC_HOLDER" type="STRING" size="256"/>
+          <Column id="NOTE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">결혼</Col>
+            <Col id="DATA">결혼</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">출산</Col>
+            <Col id="DATA">출산</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">사망</Col>
+            <Col id="DATA">사망</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">입양</Col>
+            <Col id="DATA">입양</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="Dataset01">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">본인</Col>
+            <Col id="DATA">본인</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">자녀</Col>
+            <Col id="DATA">자녀</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">배우자</Col>
+            <Col id="DATA">배우자</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">본인 및 배우자의 부모</Col>
+            <Col id="DATA">본인 및 배우자의 부모</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">본인 및 배우자의 조부모·외조부모</Col>
+            <Col id="DATA">본인 및 배우자의 조부모·외조부모</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">자녀와 그 자녀의 배우자</Col>
+            <Col id="DATA">자녀와 그 자녀의 배우자</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">본인 및 배우자의 형제·자매</Col>
+            <Col id="DATA">본인 및 배우자의 형제·자매</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="Dataset02">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">농협</Col>
+            <Col id="DATA">농협</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">국민은행</Col>
+            <Col id="DATA">국민은행</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">신한은행</Col>
+            <Col id="DATA">신한은행</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">카카오뱅크</Col>
+            <Col id="DATA">카카오뱅크</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">우체국</Col>
+            <Col id="DATA">우체국</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_reg">
+        <ColumnInfo>
+          <Column id="REQ_NUM" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="REQ_DATE" type="STRING" size="256"/>
+          <Column id="CON_TYPE" type="STRING" size="256"/>
+          <Column id="TRGT" type="STRING" size="256"/>
+          <Column id="CON_TERM_START" type="STRING" size="256"/>
+          <Column id="CON_TERM_END" type="STRING" size="256"/>
+          <Column id="CON_AMT" type="STRING" size="256"/>
+          <Column id="REL" type="STRING" size="256"/>
+          <Column id="CON_PLACE" type="STRING" size="256"/>
+          <Column id="BANK" type="STRING" size="256"/>
+          <Column id="ACC_NUM" type="STRING" size="256"/>
+          <Column id="ACC_HOLDER" type="STRING" size="256"/>
+          <Column id="NOTE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

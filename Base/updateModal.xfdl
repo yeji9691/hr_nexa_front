@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="updateModal" width="700" height="560" titletext="New Form">
+    <Layouts>
+      <Layout height="560" mobileorientation="landscape" width="700">
+        <Static id="Static00" taborder="1" text="신청서 수정" left="302" top="39" width="97" height="21" textAlign="center" onclick="Static00_onclick" font="bold 18px/normal &quot;나눔스퀘어&quot;"/>
+        <Static id="empCode00" taborder="1" text="신 청 번 호" left="67" top="96" width="66" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="reqNumEdit" taborder="2" left="158" top="90" width="154" height="30" readonly="true" text="NEW" borderRadius="5px"/>
+        <Static id="empCode" taborder="3" text="신청자사번" left="67" top="146" width="65" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="empCodeEdit" taborder="4" left="158" top="140" width="154" height="30" borderRadius="5px"/>
+        <Static id="empName" taborder="5" text="신청자성명" left="67" top="196" width="65" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="empNameEdit" taborder="6" left="158" top="190" width="154" height="30" borderRadius="5px"/>
+        <Static id="reqDate" taborder="7" text="신 청 일 자" left="66" top="246" width="66" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Calendar id="reqDateCal" taborder="8" left="158" top="240" width="154" height="30" borderRadius="5px"/>
+        <Static id="conType" taborder="9" text="경 조 구 분" left="66" top="296" width="66" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Combo id="conTypeCombo" taborder="10" text="" left="158" top="290" width="154" height="30" value="" index="-1" innerdataset="Dataset00" codecolumn="CODE" datacolumn="DATA" borderRadius="5px"/>
+        <Static id="rel" taborder="11" text="가 족 관 계" left="66" top="346" width="66" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Combo id="relCombo" taborder="12" text="-- 선택하세요 --" left="158" top="340" width="154" height="30" value="" index="-1" innerdataset="Dataset01" codecolumn="CODE" datacolumn="DATA" borderRadius="5px"/>
+        <Static id="conTermStart" taborder="13" text="경조일자(시작일)" left="23" top="396" width="101" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Calendar id="conTermStartCal" taborder="14" left="158" top="390" width="154" height="30" borderRadius="5px"/>
+        <Static id="conTermEnd" taborder="15" text="경조일자(종료일)" left="23" top="446" width="101" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Calendar id="conTermEndCal" taborder="16" left="158" top="440" width="154" height="30" borderRadius="5px"/>
+        <Static id="trgt" taborder="17" text="대상자성명" left="391" top="96" width="65" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="trgtEdit" taborder="18" left="476" top="90" width="154" height="30" borderRadius="5px"/>
+        <Static id="conPlace" taborder="19" text="경 조 장 소" left="390" top="146" width="66" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="conPlaceEdit" taborder="20" left="476" top="140" width="154" height="30" borderRadius="5px"/>
+        <Static id="conAmt" taborder="21" text="신 청 금 액" left="390" top="196" width="66" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <MaskEdit id="conAmtMEdit" taborder="22" left="476" top="190" width="154" height="30" format="+#,###" borderRadius="5px"/>
+        <Static id="accNum" taborder="23" text="계 좌 번 호" left="390" top="246" width="66" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="accNumEdit" taborder="24" left="476" top="240" width="154" height="30" borderRadius="5px"/>
+        <Static id="bank" taborder="25" text="은         행" left="388" top="296" width="68" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Combo id="bankCombo" taborder="26" text="-- 선택하세요 --" left="476" top="290" width="154" height="30" value="" index="-1" innerdataset="Dataset02" codecolumn="CODE" datacolumn="DATA" borderRadius="5px"/>
+        <Static id="accHolder" taborder="27" text="예   금   주" left="389" top="346" width="67" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="accHolderEdit" taborder="28" left="476" top="340" width="154" height="30" borderRadius="5px"/>
+        <Static id="note" taborder="29" text="비         고" left="388" top="396" width="68" height="15" textAlign="center" font="bold 10pt &quot;나눔고딕 &quot;"/>
+        <Edit id="noteEdit" taborder="30" left="476" top="390" width="154" height="30" borderRadius="5px"/>
+        <Button id="applicationBtn00" taborder="31" text="수정" left="570" top="490" width="60" height="27" font="bold 10pt &quot;나눔고딕 &quot;" onclick="applicationBtn00_onclick" borderRadius="5px"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.applicationBtn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		this.ds_reg.setColumn(0,"REQ_NUM",this.reqNumEdit.value);
+		this.ds_reg.setColumn(0,"EMP_CODE",this.empCodeEdit.value);
+		this.ds_reg.setColumn(0,"EMP_NAME",this.empNameEdit.value);
+		this.ds_reg.setColumn(0,"REQ_DATE",this.reqDateCal.value);
+		this.ds_reg.setColumn(0,"CON_TYPE",this.conTypeCombo.value);
+		this.ds_reg.setColumn(0,"TRGT",this.trgtEdit.value);
+		this.ds_reg.setColumn(0,"CON_TERM_START",this.conTermStartCal.value);
+		this.ds_reg.setColumn(0,"CON_TERM_END",this.conTermEndCal.value);
+		this.ds_reg.setColumn(0,"CON_AMT",this.conAmtMEdit.value);
+		this.ds_reg.setColumn(0,"REL",this.relCombo.value);
+		this.ds_reg.setColumn(0,"CON_PLACE",this.conPlaceEdit.value);
+		this.ds_reg.setColumn(0,"BANK",this.bankCombo.value);
+		this.ds_reg.setColumn(0,"ACC_NUM",this.accNumEdit.value);
+		this.ds_reg.setColumn(0,"ACC_HOLDER",this.accHolderEdit.value);
+		this.ds_reg.setColumn(0,"NOTE",this.noteEdit.value);
+	
+ 	this.transaction("updateModify",
+ 					"svcConExpense::conexppp",
+ 					"gds_conexpense=ds_reg",
+ 					"",
+ 					"",
+ 					"");
+	this.close();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_reg">
+        <ColumnInfo>
+          <Column id="REQ_NUM" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="REQ_DATE" type="STRING" size="256"/>
+          <Column id="CON_TYPE" type="STRING" size="256"/>
+          <Column id="TRGT" type="STRING" size="256"/>
+          <Column id="CON_TERM_START" type="STRING" size="256"/>
+          <Column id="CON_TERM_END" type="STRING" size="256"/>
+          <Column id="CON_AMT" type="STRING" size="256"/>
+          <Column id="REL" type="STRING" size="256"/>
+          <Column id="CON_PLACE" type="STRING" size="256"/>
+          <Column id="BANK" type="STRING" size="256"/>
+          <Column id="ACC_NUM" type="STRING" size="256"/>
+          <Column id="ACC_HOLDER" type="STRING" size="256"/>
+          <Column id="NOTE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="reqNumEdit" propid="value" datasetid="gds_conExpense" columnid="REQ_NUM"/>
+      <BindItem id="item1" compid="empCodeEdit" propid="value" datasetid="gds_conExpense" columnid="EMP_CODE"/>
+      <BindItem id="item2" compid="empNameEdit" propid="value" datasetid="gds_conExpense" columnid="EMP_NAME"/>
+      <BindItem id="item3" compid="reqDateCal" propid="value" datasetid="gds_conExpense" columnid="REQ_DATE"/>
+      <BindItem id="item4" compid="conTypeCombo" propid="value" datasetid="gds_conExpense" columnid="CON_TYPE"/>
+      <BindItem id="item5" compid="relCombo" propid="value" datasetid="gds_conExpense" columnid="REL"/>
+      <BindItem id="item6" compid="conTermStartCal" propid="value" datasetid="gds_conExpense" columnid="CON_TERM_START"/>
+      <BindItem id="item7" compid="conTermEndCal" propid="value" datasetid="gds_conExpense" columnid="CON_TERM_END"/>
+      <BindItem id="item8" compid="trgtEdit" propid="value" datasetid="gds_conExpense" columnid="TRGT"/>
+      <BindItem id="item9" compid="conPlaceEdit" propid="value" datasetid="gds_conExpense" columnid="CON_PLACE"/>
+      <BindItem id="item10" compid="conAmtMEdit" propid="value" datasetid="gds_conExpense" columnid="CON_AMT"/>
+      <BindItem id="item11" compid="accNumEdit" propid="value" datasetid="gds_conExpense" columnid="ACC_NUM"/>
+      <BindItem id="item12" compid="bankCombo" propid="value" datasetid="gds_conExpense" columnid="BANK"/>
+      <BindItem id="item13" compid="accHolderEdit" propid="value" datasetid="gds_conExpense" columnid="ACC_HOLDER"/>
+      <BindItem id="item14" compid="noteEdit" propid="value" datasetid="gds_conExpense" columnid="NOTE"/>
+    </Bind>
+  </Form>
+</FDL>

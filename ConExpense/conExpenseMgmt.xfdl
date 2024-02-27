@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="conExpenseMgmt" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="0" text="" left="0" top="0" width="1060" height="610">
+          <Layouts>
+            <Layout>
+              <Static id="checkDate" taborder="0" text="신청일자" left="40" top="80" width="100" height="30" textAlign="center" font="12px/normal &quot;나눔고딕&quot;"/>
+              <Button id="btnSearch" taborder="1" text="조회" left="470" top="80" width="50" height="30" onclick="Div00_btnSearch_onclick" borderRadius="5px"/>
+              <Grid id="Grid00" taborder="2" left="60" top="130" width="820" height="400" binddataset="ds_conExpense" oncellclick="Grid00_oncellclick" onheadclick="Div00_Grid00_onheadclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="40"/>
+                      <Column size="120"/>
+                      <Column size="70"/>
+                      <Column size="80"/>
+                      <Column size="70"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="80"/>
+                      <Column size="160"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="37" band="head"/>
+                      <Row size="35"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="신청번호"/>
+                      <Cell col="2" text="신청자"/>
+                      <Cell col="3" text="신청일자"/>
+                      <Cell col="4" text="경조구분"/>
+                      <Cell col="5" text="경조[시작]일"/>
+                      <Cell col="6" text="경조[종료]일"/>
+                      <Cell col="7" text="경조금액"/>
+                      <Cell col="8" text="관계"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:CHK" textAlign="center" displaytype="checkboxcontrol" edittype="checkbox"/>
+                      <Cell col="1" text="bind:REQ_NUM" textAlign="center"/>
+                      <Cell col="2" text="bind:EMP_NAME" textAlign="center"/>
+                      <Cell col="3" text="bind:REQ_DATE" textAlign="center"/>
+                      <Cell col="4" text="bind:CON_TYPE" textAlign="center"/>
+                      <Cell col="5" text="bind:CON_TERM_START" textAlign="center"/>
+                      <Cell col="6" text="bind:CON_TERM_END" textAlign="center"/>
+                      <Cell col="7" text="bind:CON_AMT" textAlign="center"/>
+                      <Cell col="8" text="bind:REL" textAlign="center"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static00" taborder="3" text="   ◼ 경조비 관리" left="10" top="10" width="1040" height="65" textAlign="left" font="bold 18px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Static00_onclick"/>
+              <Calendar id="fromCal" taborder="4" left="125" top="80" width="150" height="30" onchanged="Div00_checkDateFromCal_onchanged" borderRadius="5px"/>
+              <Calendar id="afterCal" taborder="5" left="305" top="80" width="150" height="30" borderRadius="5px"/>
+              <Static id="Static01" taborder="6" text="~" left="283" top="84" width="14" height="23" font="20px/normal &quot;나눔고딕&quot;"/>
+              <Button id="btnDelete" taborder="7" text="삭제" left="820" top="80" width="60" height="30" onclick="Div00_btnDelete_onclick" borderRadius="5px"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_conExpense">
+        <ColumnInfo>
+          <Column id="CHK" type="STRING" size="256"/>
+          <Column id="REQ_NUM" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="REQ_DATE" type="STRING" size="256"/>
+          <Column id="CON_TYPE" type="STRING" size="256"/>
+          <Column id="TRGT" type="STRING" size="256"/>
+          <Column id="CON_TERM_START" type="STRING" size="256"/>
+          <Column id="CON_TERM_END" type="STRING" size="256"/>
+          <Column id="CON_AMT" type="STRING" size="256"/>
+          <Column id="REL" type="STRING" size="256"/>
+          <Column id="CON_PLACE" type="STRING" size="256"/>
+          <Column id="BANK" type="STRING" size="256"/>
+          <Column id="ACC_NUM" type="STRING" size="256"/>
+          <Column id="ACC_HOLDER" type="STRING" size="256"/>
+          <Column id="NOTE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_conExpensedel">
+        <ColumnInfo>
+          <Column id="REQ_NUM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 전체조회
+// this.Div00_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+// {
+// 	this.transaction("strSelect",
+// 					"svcConExpense::conexp",
+// 					"",
+// 					"ds_conExpense=gds_conexpense",
+// 					"");
+// };
+
+
+// 날짜 조회
+this.Div00_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.searchConExpense();
+};
+
+this.searchConExpense = function(){
+	var startDate = this.Div00.form.fromCal.value;
+	var endDate = this.Div00.form.afterCal.value;
+	
+	this.transaction(
+		"strSelectDate",
+		"svcConExpense::conexp-selectdate",
+		"",
+		"ds_conExpense=gds_conexpense",
+		"startDate="+ startDate +
+		" endDate="+ endDate,
+		"fn_Callback2"
+	);
+}
+
+
+this.fn_Callback = function(trID, ErrorCode, ErrorMsg)
+{
+if(ErrorCode!=0){
+      alert("실패 : "+ErrorMsg);
+      this.reload();
+   }else{
+      alert(" 성공 ");
+      this.reload();
+   }
+}
+
+this.fn_Callback2 = function(trID, ErrorCode, ErrorMsg)
+{
+if(ErrorCode!=0){
+      alert("실패 : "+ErrorMsg);
+      this.reload();
+   }
+}
+
+
+this.Div00_btnDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var count = this.ds_conExpense.getRowCount();	
+		trace("삭제" + count)	
+		if(confirm("삭제 하시겠습니까?")){
+			for(i=0;i<count;i++){
+				if(this.ds_conExpense.getColumn(i,"CHK")==1){
+						var reqNum = this.ds_conExpense.getColumn(i, "REQ_NUM")
+						this.ds_conExpensedel.insertRow();
+						this.ds_conExpensedel.setColumn(0, "REQ_NUM", reqNum);
+		
+				}
+			}
+				this.transaction("strDelete",
+					"svcConExpense::conexpppp",
+					"gds_conexpense=ds_conExpensedel",
+					"",
+					"",
+					"fn_Callback"
+				);
+		}
+		
+		// 조건절 if에 변수 
+/*		if(this.fn_isCkd()){this.alert("삭제할 항목을 선택하세요.");return;}//경고창 리턴*/
+};
+
+this.gfnSetGridCheckAll = function (obj, e)
+{
+   var sChk;
+   var sVal;
+   var objDs;
+   var nCellIdx  = e.cell;
+   var sColumnId;
+   
+   //그리드에 연결된 데이터셋 가져오기
+   objDs  = obj.getBindDataset();
+   
+   //데이터셋에 데이터가 없을 경우 리턴
+   if(objDs.rowcount < 1) return;
+   
+   //전체 체크/체크해제할 컬럼명 구하기
+   sColumnId = obj.getCellProperty("body", nCellIdx, "text");
+   sColumnId = sColumnId.toString().replace("bind:", "");
+      
+   //Head의 현재 Check설정 값 가져오기
+   sVal = obj.getCellProperty("head", nCellIdx, "text");
+
+   //현재 체크상태일 경우
+   if (sVal == "1" )
+   {
+      //Head의 값을 체크해제로 설정
+      obj.setCellProperty("head", nCellIdx, "text", "0");
+      sChk="0";
+   }
+   //현재 체크해제상태일 경우
+   else {
+      //Head의 값을 체크로 설정
+      obj.setCellProperty("head", nCellIdx, "text", "1");
+      sChk="1";
+   }
+   
+   
+   //성능 개선을 위해 이벤트 발생 정지
+   objDs.set_enableevent(false);
+   
+   // Body에 전체 체크/체크해제 상태 적용
+   for(var i=0 ; i< objDs.rowcount ; i++) 
+   {
+      objDs.setColumn(i, sColumnId, sChk);
+   }
+   
+   //성능 개선을 위해 이벤트 발생 재실행
+   objDs.set_enableevent(true);
+};
+
+this.Div00_Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+   if(e.cell==0)
+   {
+      this.gfnSetGridCheckAll(obj, e);
+   }
+   trace("클릭했음");
+};
+]]></Script>
+  </Form>
+</FDL>
